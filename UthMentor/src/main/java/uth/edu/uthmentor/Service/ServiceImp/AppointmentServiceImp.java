@@ -101,40 +101,6 @@ public class AppointmentServiceImp implements AppointmentService {
     }
 
     @Override
-    public String updateAppointment(Long appointmentId, User user, String status, String note) {
-        Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow(() -> new IllegalArgumentException("Appointment not found"));
-
-        if (user.getRole().equals(Role.MENTOR)) {
-            if (!user.getMentor().getId().equals(appointment.getMentor().getId())) {
-                throw new RuntimeException("You don't have permission to update this appointment");
-            }
-        } else if (user.getRole().equals(Role.MEMBER)) {
-            if (!user.getMember().getId().equals(appointment.getMember().getId())) {
-                throw new RuntimeException("You don't have permission to update this appointment");
-            }
-        } else if (!user.getRole().equals(Role.ADMIN)) {
-            throw new RuntimeException("You don't have permission to update appointments");
-        }
-
-        Status newStatus;
-        try {
-            newStatus = Status.valueOf(status.trim().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Invalid status: " + status);
-        }
-
-        appointment.setStatus(newStatus);
-
-        if (note != null && !note.trim().isEmpty()) {
-            appointment.setNote(note);
-        }
-
-        appointmentRepository.save(appointment);
-
-        return "Appointment status updated to " + newStatus;
-    }
-
-    @Override
     public List<AppointmentDto> getAppointmentsByUser(User user) {
         Member memberDB = memberRepository.findByUserWithAppointments(user).orElseThrow(() -> new RuntimeException("Member not found"));
 

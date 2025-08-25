@@ -24,31 +24,6 @@ public class MemberServiceImp implements MemberService {
     }
 
     @Override
-    public String updateMember(User user, Long memberId, MemberDto memberDto) {
-        Member memberDB = memberRepository.findById(memberId).orElseThrow(()-> new IllegalArgumentException("Member can not found with this id " + memberId));
-        if(!user.getRole().name().equals("ADMIN") && !user.getMember().getId().equals(memberDB.getId())){
-            throw new RuntimeException("You don't have permission to update other information");
-        }
-        memberDB.setFirstName(memberDto.getFirstName());
-        memberDB.setLastName(memberDto.getLastName());
-        memberDB.setEmail(memberDto.getEmail());
-        memberDB.setUsername(memberDto.getUsername());
-        memberDB.setPhoneNumber(memberDto.getPhoneNumber());
-        memberDB.setAddress(memberDto.getAddress());
-        memberDB.setDob(memberDto.getDob());
-
-        memberRepository.save(memberDB);
-        return "Update Member successfully";
-    }
-
-    @Override
-    public String deleteMember(Long memberId) {
-        Member memberDB = memberRepository.findById(memberId).orElseThrow(()-> new IllegalArgumentException("Can not found member with this id " + memberId));
-        memberRepository.delete(memberDB);
-        return "Delete member successfully";
-    }
-
-    @Override
     public MemberDto getMemberProfile(User user) {
         return memberToDto(user.getMember());
     }

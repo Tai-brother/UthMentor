@@ -24,17 +24,6 @@ public class MemberController {
         return ResponseEntity.ok(memberService.getAllMembers());
     }
 
-    @PutMapping("update/{memberId}")
-    public ResponseEntity<String> updateMember(@PathVariable Long memberId, @RequestBody MemberDto memberDto, Authentication authentication){
-        User user = (User) authentication.getPrincipal();
-        return ResponseEntity.ok(memberService.updateMember(user ,memberId, memberDto));
-    }
-
-    @DeleteMapping("delete/{memberId}")
-    public ResponseEntity<String> deleteMember(@PathVariable Long memberId){
-        return ResponseEntity.ok(memberService.deleteMember(memberId));
-    }
-
     @GetMapping("/me")
     public ResponseEntity<MemberDto> getMemberProfile(Authentication authentication) {
         User user = (User) authentication.getPrincipal();

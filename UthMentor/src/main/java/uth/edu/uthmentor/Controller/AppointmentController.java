@@ -54,16 +54,6 @@ public class AppointmentController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/update/{appointmentId}")
-    public ResponseEntity<String> updateAppointment(
-            @PathVariable Long appointmentId,
-            Authentication authentication,
-            @RequestParam String status,
-            @RequestParam(required = false) String note){
-        User user = (User) authentication.getPrincipal();
-        return ResponseEntity.ok(appointmentService.updateAppointment(appointmentId, user, status, note));
-    }
-
     @GetMapping("/getBy-mentor")
     public ResponseEntity<List<AppointmentDto>> getAllByMen(Authentication authentication) {
         User user = (User) authentication.getPrincipal();

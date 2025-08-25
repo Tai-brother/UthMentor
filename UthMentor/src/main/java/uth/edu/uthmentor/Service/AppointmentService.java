@@ -16,8 +16,6 @@ public interface AppointmentService {
 
     List<AppointmentDto> getAllByMen(User user);
 
-    String updateAppointment(Long appointmentId, User user, String status, String note);;
-
     List<AppointmentDto> getAppointmentsByUser(User user);
 
     String createVnPayUrl(Appointment appointment);
