@@ -1,0 +1,155 @@
+/* Booking Progress */
+.booking-progress {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  background-color: #0d6efd;
+  transition: width 0.5s ease;
+}
+
+.progress-steps {
+  position: relative;
+  margin-top: -14px;
+  padding: 0 10px;
+}
+
+.progress-step {
+  text-align: center;
+  color: #6c757d;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.progress-step.active {
+  color: #0d6efd;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+.step-label {
+  display: block;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Doctor Info */
+.doctor-avatar img {
+  transition: transform 0.3s ease;
+}
+
+.doctor-avatar img:hover {
+  transform: scale(1.05);
+}
+
+.doctor-info .badge {
+  padding: 6px 10px;
+  font-weight: 500;
+}
+
+/* Date Cards */
+.date-cards {
+  margin-bottom: 20px;
+}
+
+.date-card {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid #dee2e6;
+}
+
+.date-card:hover {
+  border-color: #0d6efd;
+  transform: translateY(-2px);
+}
+
+.date-card.selected {
+  background-color: #e8f0fe;
+  border-color: #0d6efd;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.2);
+}
+
+/* Time Slots */
+.time-slots {
+  margin-top: 15px;
+}
+
+.time-slot-card {
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.time-slot-card:hover {
+  border-color: #0d6efd;
+  background-color: #f8f9fa;
+}
+
+.time-slot-card.selected {
+  background-color: #e8f0fe;
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+/* Success Card */
+.success-card {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading-container {
+  padding: 40px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .step-label {
+    font-size: 12px;
+  }
+  
+  .step-number {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+  }
+}
